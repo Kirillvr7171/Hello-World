@@ -1,0 +1,55 @@
+import math
+import pygame
+
+pygame.init()
+
+WIDTH = 640
+HEIGHT = 480
+SIZE = (WIDTH, HEIGHT)
+
+screen = pygame.display.set_mode(SIZE)
+clock = pygame.time.Clock()
+
+sky_blue = (163, 208, 230)
+WHITE = (255, 255, 255)
+grey = (60, 60, 60)
+dark_grey = (80, 80, 80)
+blue_glass = (173, 216, 230)
+glass_highlight = (210, 240, 255)
+red = (200, 0, 0) 
+black = (0,0,0)
+
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            print (f"{event.pos},")
+    
+    screen.fill(black)  
+
+    pygame.draw.rect(screen, red,(0,100,2000, 10))
+    pygame.draw.line(screen, red, (0, 180), (640, 200), 8)
+    pygame.draw.line(screen, red, (640, 260), (0, 280), 8)
+    pygame.draw.line(screen, red, (0, 340), (640, 360), 8)
+    pygame.draw.rect(screen, red, (0, 450, 640, 10)) 
+    pygame.draw.rect(screen, red, (0, 480, 640, 10))
+
+
+    pygame.draw.rect(screen, blue_glass, (300, 100, 20, 85), 2)
+    for y in range(120, 170, 15):
+        pygame.draw.line(screen, blue_glass, (302, y), (320, y), 2)
+
+    pygame.draw.rect(screen, blue_glass, (480, 200, 20, 65), 2)
+    for y in range(220, 270, 14):
+        pygame.draw.line(screen, blue_glass, (483, y), (500, y), 2)
+
+    pygame.draw.rect(screen, blue_glass, (150, 280, 20, 65), 2)
+    for y in range(300, 330, 14):
+        pygame.draw.line(screen, blue_glass, (148, y), (170, y), 2)
+
+    pygame.display.flip()
+    clock.tick(30)
+
+pygame.quit()
