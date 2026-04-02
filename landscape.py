@@ -42,19 +42,19 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    if cx > 500:
+    if cx > 2000:
         cx = 0
     
     frame_count += 1
     boat_x += 2
 
-    bob = math.sin(frame_count * 0.04) * 7
+    bob = math.sin(frame_count * 0.07) * 7
     
     if boat_x > WIDTH:
         boat_x = -200
     
     water_offset = (water_offset + 1) % 100
-# SUN movement
+    
     if growth:
         sun_radius += 0.1
         if sun_radius > 50:
@@ -81,7 +81,7 @@ while running:
 
     screen.fill(current_sky)
     cx += 3
-    if thecycle < 0.3:
+    if thecycle <= 0.3:
         pygame.draw.circle(screen, white, (550, 60), int(sun_radius))
         pygame.draw.circle(screen, (128, 128, 128), (540, 50), 6)
         pygame.draw.circle(screen, (128, 128, 128), (565, 70), 8)
@@ -89,12 +89,13 @@ while running:
     else:
         pygame.draw.circle(screen, (255, 223, 0), (550, 60), int(sun_radius))
 # Cloud move
-    for cloud_x in range(-68, WIDTH + 200, 500):
+    for cloud_x in range(-5200, WIDTH + 100, 200):
         y = 100
         pygame.draw.circle(screen, cloudwhite, (cloud_x + cx, y), 30)
         pygame.draw.circle(screen, cloudwhite, (cloud_x + 25 + cx, y - 10), 35)
         pygame.draw.circle(screen, cloudwhite, (cloud_x + 50 + cx, y), 30)
- 
+
+
     for kirill in range(-100, WIDTH + 100, 100):
         pygame.draw.ellipse(screen, water, (kirill - water_offset, 440, 120, 80))
 
