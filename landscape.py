@@ -16,7 +16,6 @@ skynight = (25,25,212)
 skyeblue = (135, 206, 235)
 water = (0, 105, 148)
 deep_water = (0, 75, 110)
-sun_colour = (255, 223, 0)
 brown = (139, 69, 19)
 white = (240, 240, 240)
 cloudwhite = (255, 255, 255)
@@ -50,7 +49,7 @@ while running:
 
     bob = math.sin(frame_count * 0.07) * 7
     
-    if boat_x > WIDTH:
+    if boat_x > WIDTH + 50:
         boat_x = -200
     
     water_offset = (water_offset + 1) % 100
@@ -63,14 +62,6 @@ while running:
         sun_radius += -0.1
         if sun_radius < 40:
             growth = True
-# SUN COLOUR 
-    sun_colour += -1
-    if sun_colour < 0:
-        sun_colour = 255
-    
-    sun_x += sun_speed
-    if sun_x > WIDTH + 50:
-        sun_x = -50 
 # Screen Hue Change
     frame_count += 1
     thecycle = (math.sin(frame_count * 0.01) + 1) / 2     
